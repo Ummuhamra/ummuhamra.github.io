@@ -3,55 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resto Ummu Hamra - Full Menu</title>
+<title>Resto Ummu Hamra - Premium</title>
 <style>
 /* Reset & Basic */
 * { margin:0; padding:0; box-sizing:border-box; }
-html, body { overflow-x:hidden; font-family:'Arial', sans-serif; background: linear-gradient(145deg,#fff176,#ffffff); color:#000; }
+html, body { font-family:'Arial', sans-serif; background: linear-gradient(145deg, #fff176, #ffffff); color:#000; overflow-x:hidden; }
 a { text-decoration:none; color:#000; transition:0.3s; }
 a:hover { color:#f57f17; }
 
 /* Header */
-header { background:#fff8e1; color:#000; padding:15px 10px; text-align:center; box-shadow:0 5px 10px rgba(0,0,0,0.3); position:sticky; top:0; z-index:100; }
-header img { max-width:120px; margin-bottom:8px; transition: transform 0.3s; }
+header {
+  background:#fff8e1; color:#000; padding:20px 15px; text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2); position:sticky; top:0; z-index:100;
+}
+header img { max-width:140px; margin-bottom:8px; transition: transform 0.3s; }
 header img:hover { transform: scale(1.05); }
-header h1 { font-size:1.6rem; color:#f57f17; text-shadow:1px 1px #ffeb3b,2px 2px #fff59d; }
+header h1 { font-size:1.9rem; color:#f57f17; text-shadow:2px 2px #ffeb3b, 4px 4px #fff59d; }
 
 /* Navigation */
-nav { display:flex; justify-content:center; gap:15px; background:#fff9c4; padding:8px 0; position:sticky; top:70px; z-index:99; box-shadow:0 5px 10px rgba(0,0,0,0.3); flex-wrap:wrap; }
-nav a { font-weight:bold; font-size:0.9rem; white-space:nowrap; }
+nav {
+  display:flex; justify-content:center; gap:20px; background:#fff9c4; padding:10px 0;
+  position:sticky; top:90px; z-index:99; box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  flex-wrap:wrap;
+}
+nav a { font-weight:bold; font-size:0.95rem; white-space:nowrap; }
 nav a:hover { color:#f57f17; }
 
 /* Sections */
-section { padding:30px 10px; max-width:1200px; margin:auto; }
-h2 { color:#f57f17; margin-bottom:20px; border-bottom:2px solid #f57f17; display:inline-block; padding-bottom:4px; text-shadow:1px 1px #fff59d; font-size:1.4rem; }
-h3 { margin:20px 0 10px; color:#f57f17; text-shadow:1px 1px #fff9c4; font-size:1.1rem; }
+section { padding:40px 12px; max-width:1200px; margin:auto; }
+h2 { color:#f57f17; margin-bottom:25px; border-bottom:3px solid #f57f17; display:inline-block; padding-bottom:5px; text-shadow:2px 2px #fff59d; }
+h3 { margin:20px 0 15px; color:#f57f17; text-shadow:1px 1px #fff9c4; font-size:1.1rem; }
 
 /* Grid Menu */
-.menu-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:12px; }
-.menu-card { background:#fffde7; border:1.5px solid #f57f17; border-radius:10px; padding:12px; transition:0.5s; box-shadow:0 3px 10px rgba(0,0,0,0.3); transform:translateY(20px); opacity:0; word-wrap:break-word; font-size:0.85rem; }
-.menu-card.show { transform:translateY(0); opacity:1; }
-.menu-card h4 { margin-bottom:8px; color:#f57f17; text-shadow:1px 1px #fff59d; font-size:0.9rem; }
-.menu-card span { display:block; font-weight:bold; color:#000; font-size:0.85rem; }
+.menu-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:15px; }
+.menu-card {
+  background:#fffde7; border:2px solid #f57f17; border-radius:10px; padding:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.2); word-wrap:break-word;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.menu-card:hover { transform: scale(1.03); box-shadow:0 5px 15px rgba(0,0,0,0.3); }
+.menu-card h4 { margin-bottom:8px; color:#f57f17; text-shadow:1px 1px #fff59d; font-size:0.95rem; }
+.menu-card span { display:block; font-weight:bold; color:#000; font-size:0.9rem; }
 
 /* WhatsApp Button */
-.whatsapp { position:fixed; bottom:15px; right:15px; background:#25D366; color:white; padding:10px 16px; border-radius:50px; font-weight:bold; font-size:0.85rem; box-shadow:0 4px 10px rgba(0,0,0,0.5); z-index:1000; }
+.whatsapp {
+  position:fixed; bottom:15px; right:15px; background:#25D366; color:white; padding:12px 18px;
+  border-radius:50px; font-weight:bold; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:0.3s; z-index:1000;
+  font-size:0.9rem;
+}
 .whatsapp:hover { background:#1ebe57; }
 
 /* Map */
-.map-container { text-align:center; margin-top:20px; }
+.map-container { text-align:center; margin-top:25px; }
 iframe { width:100%; max-width:100%; height:300px; border:0; border-radius:10px; }
 
 /* Footer */
-footer { background:#fff8e1; color:#000; text-align:center; padding:12px; margin-top:30px; box-shadow:0 -3px 10px rgba(0,0,0,0.3); font-size:0.85rem; }
+footer { background:#fff8e1; color:#000; text-align:center; padding:15px; margin-top:40px; box-shadow:0 -4px 10px rgba(0,0,0,0.2); font-size:0.85rem; }
 
 /* Responsive */
-@media(max-width:480px){
-  h1 { font-size:1.4rem; }
-  h2 { font-size:1.2rem; }
+@media(max-width:768px){
+  nav { flex-direction:column; gap:10px; }
+  header h1 { font-size:1.6rem; }
+  h2 { font-size:1.3rem; }
   h3 { font-size:1rem; }
-  nav { flex-direction:column; gap:8px; }
-  .menu-card { font-size:0.8rem; padding:8px; }
+  .menu-card { padding:10px; }
+}
+@media(max-width:480px){
+  header h1 { font-size:1.4rem; }
+  h2 { font-size:1.2rem; }
+  h3 { font-size:0.95rem; }
+  .menu-card h4 { font-size:0.85rem; }
+  .menu-card span { font-size:0.8rem; }
+  .whatsapp { padding:10px 14px; font-size:0.8rem; }
+  iframe { height:250px; }
 }
 </style>
 </head>
@@ -71,7 +95,6 @@ footer { background:#fff8e1; color:#000; text-align:center; padding:12px; margin
 <section id="menu">
   <h2>Daftar Menu</h2>
 
-  <!-- Semua Menu -->
   <h3>Aneka Ayam</h3>
   <div class="menu-grid">
     <div class="menu-card"><h4>Ayam Goreng Tepung Asam Manis</h4><span>Rp45.000</span></div>
@@ -151,6 +174,7 @@ footer { background:#fff8e1; color:#000; text-align:center; padding:12px; margin
     <div class="menu-card"><h4>Mix Platter</h4><span>Rp35.000</span></div>
     <div class="menu-card"><h4>Singkong Goreng Crispy</h4><span>Rp25.000</span></div>
   </div>
+
 </section>
 
 <section id="contact">
@@ -162,7 +186,9 @@ footer { background:#fff8e1; color:#000; text-align:center; padding:12px; margin
 <section id="location">
   <h2>Lokasi</h2>
   <div class="map-container">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.090579904528!2d114.8227635!3d-3.4401923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de6810055a65585:0x847f1573e34f80c1!2sUmmu%20Hamra%20Resto!5e0!3m2!1sid!2sid!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.090579904528!2d114.8227635!3d-3.4401923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de6810055a65585:0x847f1573e34f80c1!2sUmmu%20Hamra%20Resto!5e0!3m2!1sid!2sid!4v1700000000000" 
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>
 
@@ -180,18 +206,6 @@ document.querySelectorAll('nav a').forEach(link => {
     document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior:'smooth' });
   });
 });
-
-// Scroll animation menu
-const menuCards = document.querySelectorAll('.menu-card');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.1 });
-
-menuCards.forEach(card => observer.observe(card));
 </script>
 
 </body>
