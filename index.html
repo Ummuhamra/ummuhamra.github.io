@@ -7,43 +7,55 @@
 <style>
 /* Reset & Basic */
 * { margin:0; padding:0; box-sizing:border-box; }
-html, body { font-family:'Arial', sans-serif; background: linear-gradient(145deg, #fff176, #ffffff); color:#000; overflow-x:hidden; }
+html, body { font-family:'Arial', sans-serif; color:#000; overflow-x:hidden; }
 a { text-decoration:none; color:#000; transition:0.3s; }
 a:hover { color:#f57f17; }
 
+/* Background */
+body {
+  background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGNvZmZlJTIwcmVzdGF1cmFudHxlbnwwfHx8fDE2NzE2MjQ4NDA&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center fixed;
+  background-size: cover;
+}
+
 /* Header */
 header {
-  background:#fff8e1; color:#000; padding:20px 15px; text-align:center;
+  background: rgba(255, 248, 225, 0.85);
+  color:#000; padding:20px 15px; text-align:center;
   box-shadow:0 4px 10px rgba(0,0,0,0.2); position:sticky; top:0; z-index:100;
 }
-header img { max-width:140px; margin-bottom:8px; transition: transform 0.3s; }
-header img:hover { transform: scale(1.05); }
-header h1 { font-size:1.9rem; color:#f57f17; text-shadow:2px 2px #ffeb3b, 4px 4px #fff59d; }
+header img { max-width:140px; margin-bottom:8px; }
+header h1 { font-size:1.9rem; color:#f57f17; text-shadow:2px 2px #ffeb3b; }
 
 /* Navigation */
 nav {
-  display:flex; justify-content:center; gap:20px; background:#fff9c4; padding:10px 0;
-  position:sticky; top:90px; z-index:99; box-shadow:0 4px 10px rgba(0,0,0,0.2);
-  flex-wrap:wrap;
+  display:flex; justify-content:center; gap:20px; background: rgba(255, 249, 196, 0.85); padding:10px 0;
+  position:sticky; top:90px; z-index:99; flex-wrap:wrap;
 }
-nav a { font-weight:bold; font-size:0.95rem; white-space:nowrap; }
+nav a { font-weight:bold; font-size:0.95rem; }
 nav a:hover { color:#f57f17; }
 
 /* Sections */
 section { padding:40px 12px; max-width:1200px; margin:auto; }
-h2 { color:#f57f17; margin-bottom:25px; border-bottom:3px solid #f57f17; display:inline-block; padding-bottom:5px; text-shadow:2px 2px #fff59d; }
+h2 { color:#f57f17; margin-bottom:25px; border-bottom:3px solid #f57f17; display:inline-block; padding-bottom:5px; text-shadow:2px 2px #fff59d; opacity:0; transform: translateY(30px); transition:0.6s ease-out; }
+section.show h2 { opacity:1; transform: translateY(0); }
 h3 { margin:20px 0 15px; color:#f57f17; text-shadow:1px 1px #fff9c4; font-size:1.1rem; }
 
 /* Grid Menu */
 .menu-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:15px; }
 .menu-card {
-  background:#fffde7; border:2px solid #f57f17; border-radius:10px; padding:12px;
+  background: rgba(255, 253, 231, 0.9); border:2px solid #f57f17; border-radius:10px; padding:12px;
   box-shadow:0 3px 10px rgba(0,0,0,0.2); word-wrap:break-word;
+  position:relative; overflow:hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.menu-card:hover { transform: scale(1.03); box-shadow:0 5px 15px rgba(0,0,0,0.3); }
+.menu-card:hover { transform: scale(1.05); box-shadow:0 6px 18px rgba(0,0,0,0.35); }
 .menu-card h4 { margin-bottom:8px; color:#f57f17; text-shadow:1px 1px #fff59d; font-size:0.95rem; }
-.menu-card span { display:block; font-weight:bold; color:#000; font-size:0.9rem; }
+.menu-card span {
+  display:block; font-weight:bold; color:#000; font-size:0.9rem;
+  position:absolute; bottom:0; left:0; right:0; background: rgba(255,255,255,0.85); padding:5px; text-align:center;
+  transform: translateY(100%); transition: transform 0.3s ease;
+}
+.menu-card:hover span { transform: translateY(0); }
 
 /* WhatsApp Button */
 .whatsapp {
@@ -58,7 +70,7 @@ h3 { margin:20px 0 15px; color:#f57f17; text-shadow:1px 1px #fff9c4; font-size:1
 iframe { width:100%; max-width:100%; height:300px; border:0; border-radius:10px; }
 
 /* Footer */
-footer { background:#fff8e1; color:#000; text-align:center; padding:15px; margin-top:40px; box-shadow:0 -4px 10px rgba(0,0,0,0.2); font-size:0.85rem; }
+footer { background: rgba(255, 248, 225, 0.85); color:#000; text-align:center; padding:15px; margin-top:40px; box-shadow:0 -4px 10px rgba(0,0,0,0.2); font-size:0.85rem; }
 
 /* Responsive */
 @media(max-width:768px){
@@ -206,6 +218,15 @@ document.querySelectorAll('nav a').forEach(link => {
     document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior:'smooth' });
   });
 });
+
+// Fade-in section
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){ entry.target.classList.add('show'); }
+  });
+}, { threshold: 0.2 });
+sections.forEach(sec => observer.observe(sec));
 </script>
 
 </body>
