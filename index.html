@@ -1,225 +1,264 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resto Ummu Hamra - Premium</title>
-<style>
-/* Reset & Basic */
-* { margin:0; padding:0; box-sizing:border-box; }
-html, body { font-family:'Arial', sans-serif; color:#000; overflow-x:hidden; }
-body {
-  background: url('https://images.unsplash.com/photo-1617196030337-57e1b4a6230d?auto=format&fit=crop&w=1650&q=80') no-repeat center center fixed;
-  background-size: cover;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resto Ummu Hamra - Premium</title>
+  <!-- Replace or keep Google Fonts as you like -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#b85c1e; /* coklat-oranye seperti foto */
+      --accent-2:#f2c27b;
+      --paper:#f7e7c6;
+      --paper-2:#edd8ae;
+      --dark:#3b2414;
+      --text:#3b2414;
+      --card-radius:10px;
+      --shadow: 0 10px 28px rgba(0,0,0,0.28);
+      --max-width:980px;
+    }
 
-/* Header */
-header {
-  background: rgba(255,248,225,0.9); padding:20px; text-align:center;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2); position:sticky; top:0; z-index:100;
-}
-header img { max-width:140px; margin-bottom:8px; transition: transform 0.3s; }
-header img:hover { transform: scale(1.05); }
-header h1 { font-size:1.9rem; color:#f57f17; text-shadow:2px 2px #ffeb3b, 4px 4px #fff59d; }
+    /* reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      /* Background utama ala menu Timur Tengah */
+      background: url('/mnt/data/1000265654.png') no-repeat center top fixed;
+      background-size: cover;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding-bottom:60px;
+    }
 
-/* Navigation */
-nav {
-  display:flex; justify-content:center; align-items:center; gap:20px;
-  background: rgba(255,249,196,0.85); padding:10px 0;
-  position:sticky; top:90px; z-index:99; flex-wrap:wrap; text-align:center;
-}
-nav a { font-weight:bold; font-size:0.95rem; color:#000; transition:0.3s; }
-nav a:hover { color:#f57f17; }
+    /* Top bar / hero */
+    .hero{
+      max-width:var(--max-width);margin:0 auto;padding:38px 20px 26px;display:flex;align-items:center;gap:20px;position:relative;
+    }
+    .logo-wrap{display:flex;align-items:center;gap:14px}
+    .logo-wrap img{width:84px;height:84px;object-fit:contain;border-radius:12px;box-shadow:var(--shadow);background:linear-gradient(180deg,var(--cream),#fff)}
+    .brand{
+      color:var(--cream);text-shadow:0 6px 30px rgba(0,0,0,0.5)
+    }
+    .brand h1{font-family:'Playfair Display', serif;font-size:2.2rem;margin-bottom:4px;color:var(--accent-2)}
+    .brand p{font-size:0.95rem;opacity:0.95}
 
-/* Sections */
-section { padding:40px 12px; max-width:1200px; margin:auto; }
-h2 { color:#f57f17; margin-bottom:25px; border-bottom:3px solid #f57f17; display:inline-block; padding-bottom:5px; text-shadow:2px 2px #fff59d; }
-h3 { margin:20px 0 15px; color:#f57f17; text-shadow:1px 1px #fff9c4; font-size:1.1rem; }
+    /* Navigation (glass) */
+    nav{
+      width:100%;display:flex;justify-content:center;gap:18px;padding:10px 16px;border-radius:8px;margin:10px auto 26px;
+      background: linear-gradient(180deg, var(--paper), var(--paper-2));
+      max-width:520px;box-shadow:var(--shadow);text-decoration:none;padding:8px 14px;border-radius:999px;font-weight:600;transition:all .22s}
+    nav a:hover{transform:translateY(-3px);background:var(--glass-2);color:#fff}
 
-/* Grid Menu */
-.menu-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:15px; }
-.menu-card {
-  background: rgba(255,253,231,0.95); border:2px solid #f57f17; border-radius:10px; padding:12px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.2); word-wrap:break-word;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  position: relative; overflow: hidden;
-}
-.menu-card::after {
-  content: attr(data-price);
-  position: absolute; bottom:0; left:0; right:0; padding:6px 10px;
-  background: rgba(245,127,23,0.85); color:#fff; font-weight:bold; text-align:center;
-  opacity:0; transform: translateY(100%);
-  transition: all 0.3s ease-in-out;
-}
-.menu-card:hover::after { opacity:1; transform: translateY(0); }
-.menu-card:hover { transform: scale(1.05); box-shadow:0 5px 15px rgba(0,0,0,0.3); }
-.menu-card h4 { margin-bottom:8px; color:#f57f17; text-shadow:1px 1px #fff59d; font-size:0.95rem; }
+    /* Main container */
+    .container{max-width:var(--max-width);margin:0 auto;padding:28px 22px;background:linear-gradient(180deg, var(--paper), var(--paper-2));border-radius:16px}
 
-/* WhatsApp Button */
-.whatsapp {
-  position:fixed; bottom:15px; right:15px; background:#25D366; color:white; padding:12px 18px;
-  border-radius:50px; font-weight:bold; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:0.3s; z-index:1000;
-  font-size:0.9rem;
-}
-.whatsapp:hover { background:#1ebe57; }
+    /* Section headings */
+    .section-head{display:flex;align-items:end;gap:18px;margin:20px 0 12px}
+    .section-head h2{font-family:'Playfair Display',serif;color:var(--accent);font-size:1.45rem;border-bottom:3px solid var(--accent);padding-bottom:6px}
+    .section-lead{color:#fff;opacity:0.9;font-size:0.95rem}
 
-/* Map */
-.map-container { text-align:center; margin-top:25px; }
-iframe { width:100%; max-width:100%; height:300px; border:0; border-radius:10px; }
+    /* Grid */
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:14px}
+    .menu-card{
+      background: linear-gradient(180deg, #fff7e6, #f3deb8);
+      border:1px solid #d8b27c;
+      border-radius:var(--card-radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      position:relative;
+      min-height:100px;
+      display:flex;
+      flex-direction:column
+    }
+    .menu-card .thumb{height:110px;object-fit:cover;width:100%;display:block}
+    .menu-card .body{padding:12px 14px 16px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+    .menu-card h4{font-size:1rem;color:var(--accent);margin-bottom:8px;font-weight:700}
+    .menu-card p{font-size:0.9rem;color:#333;margin-bottom:8px}
 
-/* Footer */
-footer { background: rgba(255,248,225,0.9); color:#000; text-align:center; padding:15px; margin-top:40px; box-shadow:0 -4px 10px rgba(0,0,0,0.2); font-size:0.85rem; }
+    /* price badge */
+    .price-badge{position:absolute;right:12px;top:12px;background:var(--accent);color:#fff;padding:8px 10px;border-radius:999px;font-weight:700;box-shadow:0 6px 18px rgba(245,127,23,0.32)}
 
-/* Responsive */
-@media(max-width:768px){
-  nav { flex-direction:column; gap:10px; }
-  header h1 { font-size:1.6rem; }
-  h2 { font-size:1.3rem; }
-  h3 { font-size:1rem; }
-  .menu-card { padding:10px; }
-}
-@media(max-width:480px){
-  header h1 { font-size:1.4rem; }
-  h2 { font-size:1.2rem; }
-  h3 { font-size:0.95rem; }
-  .menu-card h4 { font-size:0.85rem; }
-  .whatsapp { padding:10px 14px; font-size:0.8rem; }
-  iframe { height:250px; }
-}
-</style>
+    /* Hover effect */
+    .menu-card:hover{transform:translateY(-8px);transition:transform .25s;box-shadow:0 20px 40px rgba(0,0,0,0.32)}
+
+    /* WhatsApp floating */
+    .whatsapp{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;padding:12px 16px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,0.35);display:flex;gap:10px;align-items:center}
+
+    /* Map & footer */
+    .map{margin-top:24px;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.25)}
+    .map iframe{width:100%;height:340px;border:0;display:block}
+    footer{margin-top:26px;text-align:center;padding:12px;color:#fff;opacity:0.95}
+
+    /* Small screens */
+    @media(max-width:768px){
+      .hero{flex-direction:column;align-items:flex-start;padding:22px}
+      .brand h1{font-size:1.6rem}
+      .menu-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+      .menu-card .thumb{height:96px}
+    }
+    @media(max-width:420px){
+      .menu-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+      nav{padding:8px;gap:10px}
+    }
+
+    /* fade-in animation for sections */
+    .fade-in{opacity:0;transform:translateY(18px);transition:all .6s cubic-bezier(.2,.9,.2,1)}
+    .fade-in.show{opacity:1;transform:none}
+  
+    /* === POSTER STYLE FINAL === */
+    .menu-poster{margin:34px auto;padding:26px 22px;background:linear-gradient(180deg,#f8e9c8,#eed6a8);border-radius:14px;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+    .poster-title{
+      margin:-46px auto 22px;
+      width:fit-content;
+      padding:10px 34px;
+      background:linear-gradient(180deg,#8b4a1f,#6a3416);
+      color:#f7e2b5;
+      font-family:'Playfair Display',serif;
+      font-size:1.2rem;
+      letter-spacing:.5px;
+      border-radius:999px;
+      box-shadow:0 10px 24px rgba(0,0,0,.45);
+      border:2px solid #f2c27b;
+    }
+    .poster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 22px}
+    .poster-item{display:flex;justify-content:space-between;gap:12px;font-size:.92rem;padding:6px 0;border-bottom:1px dashed rgba(90,50,20,.35)}
+    .poster-item span{flex:1}
+    .poster-item b{white-space:nowrap;color:#7a3e18}
+
+    @media(max-width:900px){.poster-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.poster-grid{grid-template-columns:1fr}.poster-title{font-size:1.05rem}}
+
+  </style>
 </head>
 <body>
 
-<header>
-  <img src="https://iili.io/f1kshmJ.th.png" alt="Logo Resto Ummu Hamra">
-  <h1>Resto Ummu Hamra</h1>
-</header>
+  <header class="hero">
+    <div class="logo-wrap">
+      <img src="https://iili.io/f1kshmJ.th.png" alt="Logo Ummu Hamra">
+      <div class="brand">
+        <h1>Resto Ummu Hamra</h1>
+        <p>Masakan Nusantara & Arabian — Premium, Halal, Berkah</p>
+      </div>
+    </div>
+  </header>
 
-<nav>
-  <a href="#menu">Menu</a>
-  <a href="#contact">Kontak</a>
-  <a href="#location">Lokasi</a>
-</nav>
+  <nav>
+    <a href="#menu">Menu</a>
+    <a href="#contact">Kontak</a>
+    <a href="#location">Lokasi</a>
+  </nav>
 
-<section id="menu">
-  <h2>Daftar Menu</h2>
+  <main class="container">
 
-  <!-- Aneka Ayam -->
-  <h3>Aneka Ayam</h3>
-  <div class="menu-grid">
-    <div class="menu-card" data-price="Rp45.000"><h4>Ayam Goreng Tepung Asam Manis</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Ayam Goreng Tepung Saos Padang</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Ayam Goreng Tepung Lada Hitam</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Ayam Goreng Tepung Rica-rica</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Ayam Goreng Tepung</h4></div>
-    <div class="menu-card" data-price="Rp90.000"><h4>Ayam Dua Rasa</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Ayam Goreng Ketumbar</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Ayam Goreng Bawang</h4></div>
-    <div class="menu-card" data-price="Rp40.000"><h4>Chicken Wings</h4></div>
-    <div class="menu-card" data-price="Rp50.000"><h4>Ayam Kung Pao</h4></div>
-  </div>
+    <section id="menu" class="fade-in">
+  <div class="section-head" style="justify-content:center"><h2>Daftar Menu</h2></div>
 
-  <!-- Aneka Seafood & Ikan -->
-  <h3>Aneka Seafood & Ikan</h3>
-  <div class="menu-grid">
-    <div class="menu-card" data-price="Rp50.000"><h4>Cumi Goreng Tepung (Asam Manis/Saus Padang/Lada Hitam/Rica-rica)</h4></div>
-    <div class="menu-card" data-price="Rp40.000"><h4>Cumi Goreng Tepung Polos</h4></div>
-    <div class="menu-card" data-price="Rp100.000"><h4>Cumi Goreng Tepung Dua Rasa</h4></div>
-    <div class="menu-card" data-price="Rp50.000"><h4>Udang Goreng Tepung (Asam Manis/Lada Hitam/Saus Padang/Rica-rica)</h4></div>
-    <div class="menu-card" data-price="Rp40.000"><h4>Udang Goreng Tepung Polos</h4></div>
-    <div class="menu-card" data-price="Rp100.000"><h4>Udang Goreng Tepung Dua Rasa</h4></div>
-    <div class="menu-card" data-price="Rp65.000"><h4>Udang Galah Bakar Saus Lada Hitam</h4></div>
-    <div class="menu-card" data-price="Rp40.000"><h4>Kerang Hijau / Kerang Dara (Asam Manis/Lada Hitam/Saus Padang/Rica-rica)</h4></div>
-    <div class="menu-card" data-price="Rp100.000"><h4>Gurami (Asam Manis/Saus Padang/Lada Hitam/Rica-rica)</h4></div>
-    <div class="menu-card" data-price="Rp80.000"><h4>Gurami Terbang</h4></div>
-    <div class="menu-card" data-price="Rp120.000"><h4>Gurami Dua Rasa</h4></div>
-    <div class="menu-card" data-price="Rp90.000"><h4>Gurami Bakar</h4></div>
-    <div class="menu-card" data-price="Rp50.000"><h4>Nila (Asam Manis/Saus Padang/Lada Hitam/Rica-rica)</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Nila Bakar</h4></div>
-    <div class="menu-card" data-price="Rp35.000"><h4>Patin (Asam Manis/Saus Padang/Lada Hitam/Rica-rica)</h4></div>
-  </div>
+  <div class="menu-poster"><div class="poster-title">🍗 ANEKA AYAM</div><div class="poster-grid">
+    <div class="poster-item"><span>Ayam Goreng Tepung Asam Manis</span><b>45.000</b></div>
+    <div class="poster-item"><span>Ayam Goreng Tepung Saos Padang</span><b>45.000</b></div>
+    <div class="poster-item"><span>Ayam Goreng Tepung Lada Hitam</span><b>45.000</b></div>
+    <div class="poster-item"><span>Ayam Goreng Tepung Rica-rica</span><b>45.000</b></div>
+    <div class="poster-item"><span>Ayam Goreng Tepung Original</span><b>45.000</b></div>
+    <div class="poster-item"><span>Ayam Dua Rasa</span><b>90.000</b></div>
+    <div class="poster-item"><span>Ayam Goreng Ketumbar</span><b>45.000</b></div>
+    <div class="poster-item"><span>Ayam Goreng Bawang</span><b>45.000</b></div>
+    <div class="poster-item"><span>Chicken Wings</span><b>40.000</b></div>
+    <div class="poster-item"><span>Ayam Kung Pao</span><b>50.000</b></div>
+  </div></div>
 
-  <!-- Nasi Goreng, Mie & Arabian -->
-  <h3>Nasi Goreng, Mie & Arabian</h3>
-  <div class="menu-grid">
-    <div class="menu-card" data-price="Rp40.000"><h4>Nasi Goreng Ayam / Banjar / Pete</h4></div>
-    <div class="menu-card" data-price="Rp50.000"><h4>Nasi Goreng Pete Ikan Asin</h4></div>
-    <div class="menu-card" data-price="Rp40.000"><h4>Nasi Goreng Kampung / Ikan Asin</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Nasi Goreng Seafood</h4></div>
-    <div class="menu-card" data-price="Rp70.000"><h4>Nasi Goreng Buntut / Iga Lada Hitam / Kambing</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Mie Goreng / Kuah Ayam</h4></div>
-    <div class="menu-card" data-price="Rp50.000"><h4>Mie Goreng / Kuah Seafood</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Bihun Goreng Ayam / Singapore</h4></div>
-    <div class="menu-card" data-price="Rp50.000"><h4>Bihun Goreng Seafood</h4></div>
-    <div class="menu-card" data-price="Rp50.000 - Rp55.000"><h4>Kwetiau Goreng Ayam / Sapi / Seafood</h4></div>
-    <div class="menu-card" data-price="Rp45.000"><h4>Nasi Mandi Ayam Bakar</h4></div>
-    <div class="menu-card" data-price="Rp70.000"><h4>Nasi Mandi Kambing</h4></div>
-  </div>
+  <div class="menu-poster"><div class="poster-title">🍚 NASI GORENG</div><div class="poster-grid">
+    <div class="poster-item"><span>Nasi Goreng Ayam</span><b>40.000</b></div>
+    <div class="poster-item"><span>Nasi Goreng Banjar</span><b>40.000</b></div>
+    <div class="poster-item"><span>Nasi Goreng Pete</span><b>40.000</b></div>
+    <div class="poster-item"><span>Nasi Goreng Pete Ikan Asin</span><b>50.000</b></div>
+    <div class="poster-item"><span>Nasi Goreng Kampung</span><b>40.000</b></div>
+    <div class="poster-item"><span>Nasi Goreng Ikan Asin</span><b>40.000</b></div>
+    <div class="poster-item"><span>Nasi Goreng Seafood</span><b>45.000</b></div>
+    <div class="poster-item"><span>Nasi Goreng Buntut</span><b>70.000</b></div>
+    <div class="poster-item"><span>Nasi Goreng Iga Janda</span><b>70.000</b></div>
+    <div class="poster-item"><span>Nasi Goreng Kambing</span><b>70.000</b></div>
+  </div></div>
 
-  <!-- Sayuran & Menu Paket -->
-  <h3>Sayuran & Menu Paket</h3>
-  <div class="menu-grid">
-    <div class="menu-card" data-price="Rp30.000 | Rp35.000"><h4>Cah Kangkung (Polos/Balacan) | Ayam</h4></div>
-    <div class="menu-card" data-price="Rp40.000 - Rp55.000"><h4>Cah Brokoli (Polos/Ayam/Sapi)</h4></div>
-    <div class="menu-card" data-price="Rp20.000 - Rp30.000"><h4>Cah Toge (Polos/Ikan Asin)</h4></div>
-    <div class="menu-card" data-price="Rp30.000 - Rp45.000"><h4>Cah Pakcoy (Polos/Ayam/Sapi/Saus Tiram)</h4></div>
-    <div class="menu-card" data-price="Rp40.000 - Rp50.000"><h4>Capcay (Polos/Ayam/Seafood)</h4></div>
-    <div class="menu-card" data-price="Rp40.000 - Rp55.000"><h4>Sapo Tahu (Ayam/Seafood)</h4></div>
-    <div class="menu-card" data-price="Rp70.000"><h4>Paket Sapi Lada Hitam</h4></div>
-    <div class="menu-card" data-price="Rp70.000"><h4>Paket Buntut (Lada Hitam/Saus Padang)</h4></div>
-    <div class="menu-card" data-price="Rp70.000"><h4>Paket Iga (Lada Hitam/Saus Padang)</h4></div>
-    <div class="menu-card" data-price="Rp70.000"><h4>Paket Soup (Buntut/Iga)</h4></div>
-    <div class="menu-card" data-price="Rp40.000"><h4>Paket Ayam Bakar</h4></div>
-    <div class="menu-card" data-price="Rp6.000"><h4>Nasi Putih</h4></div>
-  </div>
+  <div class="menu-poster"><div class="poster-title">🍜 MIE & BIHUN</div><div class="poster-grid">
+    <div class="poster-item"><span>Mie Goreng Ayam</span><b>45.000</b></div>
+    <div class="poster-item"><span>Mie Goreng Seafood</span><b>50.000</b></div>
+    <div class="poster-item"><span>Mie Kuah Ayam</span><b>45.000</b></div>
+    <div class="poster-item"><span>Mie Kuah Seafood</span><b>50.000</b></div>
+    <div class="poster-item"><span>Bihun Goreng Ayam</span><b>45.000</b></div>
+    <div class="poster-item"><span>Bihun Goreng Seafood</span><b>50.000</b></div>
+    <div class="poster-item"><span>Bihun Goreng Singapore</span><b>45.000</b></div>
+    <div class="poster-item"><span>Kwetiau Goreng Ayam</span><b>50.000</b></div>
+    <div class="poster-item"><span>Kwetiau Goreng Sapi</span><b>60.000</b></div>
+    <div class="poster-item"><span>Kwetiau Goreng Seafood</span><b>55.000</b></div>
+  </div></div>
 
-  <!-- Minuman & Snack -->
-  <h3>Minuman & Snack</h3>
-  <div class="menu-grid">
-    <div class="menu-card" data-price="Rp8.000"><h4>Teh (Es/Hangat)</h4></div>
-    <div class="menu-card" data-price="Rp12.000 - Rp17.000"><h4>Es Jeruk / Lemon Tea</h4></div>
-    <div class="menu-card" data-price="Rp25.000"><h4>Aneka Jus (Alpukat/Mangga/Buah Naga)</h4></div>
-    <div class="menu-card" data-price="Rp35.000"><h4>Milkshake (Chocolate/Vanilla/Strawberry, dll)</h4></div>
-    <div class="menu-card" data-price="Rp30.000"><h4>Moktail (Blue Leo/Electric Mint, dll)</h4></div>
-    <div class="menu-card" data-price="Rp23.000 - Rp35.000"><h4>Kopi (Cappucino/Brown Sugar, dll)</h4></div>
-    <div class="menu-card" data-price="Rp25.000"><h4>Kentang Goreng / Tahu Cabe Garam / Tempe Mendoan</h4></div>
-    <div class="menu-card" data-price="Rp25.000"><h4>Sambosa / Pastel / Risoles / Lumpia Ayam</h4></div>
-    <div class="menu-card" data-price="Rp25.000 - Rp30.000"><h4>Burger / Sosis Barbeque</h4></div>
-    <div class="menu-card" data-price="Rp35.000"><h4>Mix Platter</h4></div>
-    <div class="menu-card" data-price="Rp25.000"><h4>Singkong Goreng Crispy</h4></div>
-  </div>
+  <div class="menu-poster"><div class="poster-title">🥬 ANEKA SAYURAN</div><div class="poster-grid">
+    <div class="poster-item"><span>Cah Kangkung Polos</span><b>30.000</b></div>
+    <div class="poster-item"><span>Cah Kangkung Ayam</span><b>35.000</b></div>
+    <div class="poster-item"><span>Cah Kangkung Balacan</span><b>30.000</b></div>
+    <div class="poster-item"><span>Cah Brokoli Polos</span><b>40.000</b></div>
+    <div class="poster-item"><span>Cah Brokoli Ayam</span><b>45.000</b></div>
+    <div class="poster-item"><span>Cah Brokoli Sapi</span><b>55.000</b></div>
+    <div class="poster-item"><span>Cah Toge Polos</span><b>20.000</b></div>
+    <div class="poster-item"><span>Cah Toge Ikan Asin</span><b>30.000</b></div>
+    <div class="poster-item"><span>Cah Pakcoy Polos</span><b>30.000</b></div>
+    <div class="poster-item"><span>Cah Pakcoy Ayam</span><b>40.000</b></div>
+    <div class="poster-item"><span>Cah Pakcoy Sapi</span><b>45.000</b></div>
+    <div class="poster-item"><span>Pakcoy Saos Tiram</span><b>35.000</b></div>
+    <div class="poster-item"><span>Capcay Polos</span><b>40.000</b></div>
+    <div class="poster-item"><span>Capcay Ayam</span><b>45.000</b></div>
+    <div class="poster-item"><span>Capcay Seafood</span><b>50.000</b></div>
+    <div class="poster-item"><span>Sapo Tahu Ayam</span><b>40.000</b></div>
+    <div class="poster-item"><span>Sapo Tahu Seafood</span><b>55.000</b></div>
+  </div></div>
 
 </section>
 
-<section id="contact">
-  <h2>Kontak Kami</h2>
-  <p>Admin Resto: <a href="https://wa.me/6285750241818" target="_blank">0857-5024-1818</a></p>
-  <p>Admin Bakery & Catering: <a href="https://wa.me/6282149158498" target="_blank">0821-4915-8498</a></p>
-</section>
+    <section id="contact" class="fade-in" style="margin-top:30px">
+      <h2 style="font-family:'Playfair Display',serif;color:var(--accent)">Kontak Kami</h2>
+      <p style="margin-top:10px;color:#222">Admin Resto: <a href="https://wa.me/6285750241818" target="_blank">0857-5024-1818</a></p>
+      <p style="color:#222">Admin Bakery & Catering: <a href="https://wa.me/6282149158498" target="_blank">0821-4915-8498</a></p>
+    </section>
 
-<section id="location">
-  <h2>Lokasi</h2>
-  <div class="map-container">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.090579904528!2d114.8227635!3d-3.4401923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de6810055a65585:0x847f1573e34f80c1!2sUmmu%20Hamra%20Resto!5e0!3m2!1sid!2sid!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-</section>
+    <section id="location" class="fade-in" style="margin-top:26px">
+      <h2 style="font-family:'Playfair Display',serif;color:var(--accent)">Lokasi</h2>
+      <div class="map" style="margin-top:12px;border-radius:12px;overflow:hidden">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.090579904528!2d114.8227635!3d-3.4401923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de6810055a65585:0x847f1573e34f80c1!2sUmmu%20Hamra%20Resto!5e0!3m2!1sid!2sid!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
 
-<a href="https://wa.me/6285750241818" class="whatsapp" target="_blank">Chat Admin</a>
+    <footer>
+      &copy; 2025 Resto Ummu Hamra. All Rights Reserved.
+    </footer>
 
-<footer>
-  &copy; 2025 Resto Ummu Hamra. All Rights Reserved.
-</footer>
+  </main>
 
-<script>
-// Smooth scroll
-document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior:'smooth' });
-  });
-});
+  <a class="whatsapp" href="https://wa.me/6285750241818" target="_blank" aria-label="Chat Admin WhatsApp">Chat Admin</a>
 
-// Fade-in section saat scroll
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries => {
-  en
+  <script>
+    // Smooth scroll (works for links)
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior:'smooth', block:'start' });
+      });
+    });
+
+    // Intersection Observer: fade-in for sections
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, {threshold: 0.12});
+
+    document.querySelectorAll('.fade-in').forEach(node => observer.observe(node));
+
+    // Optional: lazy-load images inside .menu-card
+    document.querySelectorAll('.menu-card img').forEach(img=>{
+      if('loading' in HTMLImageElement.prototype) img.setAttribute('loading','lazy');
+    });
+  </script>
+</body>
+</html>
