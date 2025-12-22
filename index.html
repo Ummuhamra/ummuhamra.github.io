@@ -7,24 +7,19 @@
 <style>
 /* Reset & Basic */
 * { margin:0; padding:0; box-sizing:border-box; }
-html, body { font-family:'Arial', sans-serif; color:#000; overflow-x:hidden; background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed; background-size: cover; }
+html, body { font-family:'Arial', sans-serif; color:#000; overflow-x:hidden; }
 a { text-decoration:none; color:#000; transition:0.3s; }
 a:hover { color:#f57f17; }
 
-/* Overlay utama */
-body::before {
-  content: "";
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(255, 255, 255, 0.85);
-  z-index:-1;
+/* Background */
+body {
+  background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat fixed;
 }
+.overlay-bg { background: rgba(255,255,255,0.85); }
 
 /* Header */
 header {
-  background: rgba(255, 248, 225,0.95);
-  color:#000; padding:20px 15px; text-align:center;
+  background: rgba(255,248,225,0.95); color:#000; padding:20px 15px; text-align:center;
   box-shadow:0 4px 10px rgba(0,0,0,0.2); position:sticky; top:0; z-index:100;
 }
 header img { max-width:140px; margin-bottom:8px; transition: transform 0.3s; }
@@ -33,71 +28,43 @@ header h1 { font-size:1.9rem; color:#f57f17; text-shadow:2px 2px #ffeb3b, 4px 4p
 
 /* Navigation */
 nav {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:20px;
-  background: rgba(255, 249, 196,0.95);
-  padding:10px 0;
-  position:sticky;
-  top:90px;
-  z-index:99;
+  display:flex; justify-content:center; gap:20px; background: rgba(255,249,196,0.95); padding:10px 0;
+  position:sticky; top:90px; z-index:99; box-shadow:0 4px 10px rgba(0,0,0,0.2);
   flex-wrap:wrap;
-  text-align:center;
 }
-nav a { font-weight:bold; font-size:0.95rem; }
+nav a { font-weight:bold; font-size:1rem; text-align:center; }
 nav a:hover { color:#f57f17; }
 
 /* Sections */
-section { padding:40px 12px; max-width:1200px; margin:auto; border-radius:12px; margin-bottom:20px; background: rgba(255,255,255,0.85); }
+section { padding:40px 12px; max-width:1200px; margin:auto; }
 h2 { color:#f57f17; margin-bottom:25px; border-bottom:3px solid #f57f17; display:inline-block; padding-bottom:5px; text-shadow:2px 2px #fff59d; }
 h3 { margin:20px 0 15px; color:#f57f17; text-shadow:1px 1px #fff9c4; font-size:1.1rem; }
 
 /* Grid Menu */
 .menu-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:15px; }
 .menu-card {
-  background: rgba(255, 255, 255, 0.9); 
-  border:2px solid #f57f17; border-radius:10px; padding:12px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.2); word-wrap:break-word;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: rgba(255,255,255,0.95); border:2px solid #f57f17; border-radius:12px; padding:12px; 
+  box-shadow:0 3px 10px rgba(0,0,0,0.2); word-wrap:break-word; position:relative;
+  overflow:hidden; transition: transform 0.3s, box-shadow 0.3s;
 }
-.menu-card:hover { transform: scale(1.05); box-shadow:0 6px 18px rgba(0,0,0,0.4); }
-
-/* Overlay harga muncul saat hover */
-.menu-card span {
-  position: absolute;
-  bottom:0; left:0; right:0;
-  background: rgba(245,127,23,0.85);
-  color:white; font-weight:bold; font-size:0.9rem;
-  text-align:center; padding:6px 0;
-  transform: translateY(100%);
-  transition: transform 0.3s;
+.menu-card:hover { transform: scale(1.05); box-shadow:0 5px 15px rgba(0,0,0,0.3); }
+.menu-card h4 { margin-bottom:8px; color:#f57f17; font-weight:bold; }
+.menu-card span { display:block; font-weight:bold; color:#000; font-size:0.9rem; 
+  position:absolute; bottom:0; left:0; right:0; background: rgba(255,255,255,0.9); padding:4px 0; text-align:center;
+  opacity:0; transition: opacity 0.3s;
 }
-.menu-card:hover span { transform: translateY(0); }
-
-/* Teks judul menu card */
-.menu-card h4 {
-  background: rgba(255,255,255,0.8);
-  padding:2px 4px; border-radius:4px;
-  color:#f57f17;
-  text-shadow:1px 1px #fff59d; font-size:0.95rem; margin-bottom:4px;
-  text-align:center;
-}
+.menu-card:hover span { opacity:1; }
 
 /* WhatsApp Button */
 .whatsapp {
   position:fixed; bottom:15px; right:15px; background:#25D366; color:white; padding:12px 18px;
   border-radius:50px; font-weight:bold; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:0.3s; z-index:1000;
-  font-size:0.9rem;
 }
 .whatsapp:hover { background:#1ebe57; }
 
 /* Map */
 .map-container { text-align:center; margin-top:25px; }
-iframe { width:100%; max-width:100%; height:300px; border:0; border-radius:10px; }
+iframe { width:100%; max-width:100%; height:300px; border:0; border-radius:12px; }
 
 /* Footer */
 footer { background: rgba(255,248,225,0.95); color:#000; text-align:center; padding:15px; margin-top:40px; box-shadow:0 -4px 10px rgba(0,0,0,0.2); font-size:0.85rem; }
@@ -134,9 +101,10 @@ footer { background: rgba(255,248,225,0.95); color:#000; text-align:center; padd
   <a href="#location">Lokasi</a>
 </nav>
 
-<section id="menu">
+<section id="menu" class="overlay-bg">
   <h2>Daftar Menu</h2>
 
+  <!-- Semua kategori menu digabung di sini -->
   <h3>Aneka Ayam</h3>
   <div class="menu-grid">
     <div class="menu-card"><h4>Ayam Goreng Tepung Asam Manis</h4><span>Rp45.000</span></div>
@@ -219,6 +187,14 @@ footer { background: rgba(255,248,225,0.95); color:#000; text-align:center; padd
 
 </section>
 
-<section id="contact">
+<section id="contact" class="overlay-bg">
   <h2>Kontak Kami</h2>
-  <p style="background: rgba(255,255,255,0.8); padding:2px 4px; border-radius:4px;">Admin Resto: <a href="https://wa.me/6285750241818" target="_blank">0857-5024-1818</a></p
+  <p>Admin Resto: <a href="https://wa.me/6285750241818" target="_blank">0857-5024-1818</a></p>
+  <p>Admin Bakery & Catering: <a href="https://wa.me/6282149158494" target="_blank">0821-4915-8494</a></p>
+</section>
+
+<section id="location" class="overlay-bg">
+  <h2>Lokasi</h2>
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.090579904528!2d114.8227635!3d-3.4401923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de6810055a65585:0x847f1573e34f80c1!2sUmmu%20Hamra%20Resto!5e0!3m2!1sid!2sid!4v170000000
