@@ -347,6 +347,20 @@ const wave = new IntersectionObserver(entries=>{
 },{threshold:0.1});
 
 items.forEach(i=>wave.observe(i));
+</script> <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".poster-item");
+
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+    });
+  },{threshold:.2});
+
+  items.forEach(item=>observer.observe(item));
+});
 </script></body>  
 </html>
 
