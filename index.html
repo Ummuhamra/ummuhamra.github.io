@@ -1,346 +1,318 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resto Ummu Hamra - Premium</title>
-  <!-- Replace or keep Google Fonts as you like -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-   html,body{
-  background-attachment: fixed;
-  scroll-behavior:smooth;
+<!DOCTYPE html>  <html lang="id">    <head>    
+  <meta charset="UTF-8">    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <title>Resto Ummu Hamra - Premium</title>    
+  <!-- Replace or keep Google Fonts as you like -->    
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">    
+  <style>    
+    :root{    
+      --accent:#b85c1e; /* coklat-oranye seperti foto */    
+      --accent-2:#f2c27b;    
+      --paper:#f7e7c6;    
+      --paper-2:#edd8ae;    
+      --dark:#3b2414;    
+      --text:#3b2414;    
+      --card-radius:10px;    
+      --shadow: 0 10px 28px rgba(0,0,0,0.28);    
+      --max-width:980px;    
+    }  /* reset */    
+*{box-sizing:border-box;margin:0;padding:0}    
+html,body{    
+  /* Background utama ala menu Timur Tengah */    
+  background: url('/mnt/data/1000265654.png') no-repeat center top fixed;    
+  background-size: cover;    
+  -webkit-font-smoothing:antialiased;    
+  -moz-osx-font-smoothing:grayscale;    
+  padding-bottom:60px;    
+}    /* Top bar / hero */
+.hero{
+max-width:var(--max-width);margin:0 auto;padding:38px 20px 26px;display:flex;align-items:center;gap:20px;position:relative;
 }
+.logo-wrap{display:flex;align-items:center;gap:14px}
+.logo-wrap img{width:84px;height:84px;object-fit:contain;border-radius:12px;box-shadow:var(--shadow);background:linear-gradient(180deg,var(--cream),#fff)}
+.brand{
+color:var(--cream);text-shadow:0 6px 30px rgba(0,0,0,0.5)
+}
+.brand h1{font-family:'Playfair Display', serif;font-size:2.2rem;margin-bottom:4px;color:var(--accent-2)}
+.brand p{font-size:0.95rem;opacity:0.95}
 
+/* Navigation (glass) */
 nav{
-  position:sticky;
-  top:12px;
-  z-index:99;
-  backdrop-filter: blur(10px);
-  animation:navFloat 1s ease;
+width:100%;display:flex;justify-content:center;gap:18px;padding:10px 16px;border-radius:8px;margin:10px auto 26px;
+background: linear-gradient(180deg, var(--paper), var(--paper-2));
+max-width:520px;box-shadow:var(--shadow);text-decoration:none;padding:8px 14px;border-radius:999px;font-weight:600;transition:all .22s}
+nav a:hover{transform:translateY(-3px);background:var(--glass-2);color:#fff}
+
+/* Main container */
+.container{max-width:var(--max-width);margin:0 auto;padding:28px 22px;background:linear-gradient(180deg, var(--paper), var(--paper-2));border-radius:16px}
+
+/* Section headings */
+.section-head{display:flex;align-items:end;gap:18px;margin:20px 0 12px}
+.section-head h2{font-family:'Playfair Display',serif;color:var(--accent);font-size:1.45rem;border-bottom:3px solid var(--accent);padding-bottom:6px}
+.section-lead{color:#fff;opacity:0.9;font-size:0.95rem}
+
+/* Grid */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:14px}
+.menu-card{
+background: linear-gradient(180deg, #fff7e6, #f3deb8);
+border:1px solid #d8b27c;
+border-radius:var(--card-radius);
+overflow:hidden;
+box-shadow:var(--shadow);
+position:relative;
+min-height:100px;
+display:flex;
+flex-direction:column
+}
+.menu-card .thumb{height:110px;object-fit:cover;width:100%;display:block}
+.menu-card .body{padding:12px 14px 16px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.menu-card h4{font-size:1rem;color:var(--accent);margin-bottom:8px;font-weight:700}
+.menu-card p{font-size:0.9rem;color:#333;margin-bottom:8px}
+
+/* price badge */
+.price-badge{position:absolute;right:12px;top:12px;background:var(--accent);color:#fff;padding:8px 10px;border-radius:999px;font-weight:700;box-shadow:0 6px 18px rgba(245,127,23,0.32)}
+
+/* Hover effect */
+.menu-card:hover{transform:translateY(-8px);transition:transform .25s;box-shadow:0 20px 40px rgba(0,0,0,0.32)}
+
+/* WhatsApp floating */
+.whatsapp{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;padding:12px 16px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,0.35);display:flex;gap:10px;align-items:center}
+
+/* Map & footer */
+.map{margin-top:24px;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.25)}
+.map iframe{width:100%;height:340px;border:0;display:block}
+footer{margin-top:26px;text-align:center;padding:12px;color:#fff;opacity:0.95}
+
+/* Small screens */
+@media(max-width:768px){
+.hero{flex-direction:column;align-items:flex-start;padding:22px}
+.brand h1{font-size:1.6rem}
+.menu-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.menu-card .thumb{height:96px}
+}
+@media(max-width:420px){
+.menu-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+nav{padding:8px;gap:10px}
 }
 
-@keyframes navFloat{
-  from{opacity:0;transform:translateY(-20px)}
-  to{opacity:1;transform:none}
-}
+/* fade-in animation for sections */
+.fade-in{opacity:0;transform:translateY(18px);transition:all .6s cubic-bezier(.2,.9,.2,1)}
+.fade-in.show{opacity:1;transform:none}
 
+/* === POSTER STYLE FINAL === */
+.menu-poster{margin:34px auto;padding:26px 22px;background:linear-gradient(180deg,#f8e9c8,#eed6a8);border-radius:14px;box-shadow:0 14px 30px rgba(0,0,0,.35)}
 .poster-title{
-  animation: glow 3s infinite alternate;
+margin:-46px auto 22px;
+width:fit-content;
+padding:10px 34px;
+background:linear-gradient(180deg,#8b4a1f,#6a3416);
+color:#f7e2b5;
+font-family:'Playfair Display',serif;
+font-size:1.2rem;
+letter-spacing:.5px;
+border-radius:999px;
+box-shadow:0 10px 24px rgba(0,0,0,.45);
+border:2px solid #f2c27b;
 }
+.poster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 22px}
+.poster-item{display:flex;justify-content:space-between;gap:12px;font-size:.92rem;padding:6px 0;border-bottom:1px dashed rgba(90,50,20,.35)}
+.poster-item span{flex:1}
+.poster-item b{white-space:nowrap;color:#7a3e18}
 
-@keyframes glow{
-  from{box-shadow:0 0 10px rgba(242,194,123,.4)}
-  to{box-shadow:0 0 26px rgba(242,194,123,.9)}
-}
+@media(max-width:900px){.poster-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.poster-grid{grid-template-columns:1fr}.poster-title{font-size:1.05rem}}
 
-.menu-poster{
-  transition:all .35s cubic-bezier(.2,.8,.2,1);
-}
-.menu-poster:hover{
-  transform:scale(1.02);
-  box-shadow:0 20px 50px rgba(0,0,0,.45);
-}
-
-.poster-item{
-  position:relative;
-  overflow:hidden;
-}
-.poster-item::after{
-  content:'';
-  position:absolute;
-  top:0;left:-100%;
-  width:60%;height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
-}
-.poster-item:hover::after{
-  left:140%;
-  transition:all .7s ease;
-}
-
-.whatsapp{
-  animation:pulse 2s infinite;
-}
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.08)}
-  100%{transform:scale(1)}
-}
-
-.fade-in.show{
-  animation:reveal .9s ease both;
-}
-@keyframes reveal{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:none}
-}
-
-/* Parallax background effect */
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.25);
-  z-index:-1;
-} </style>
-</head>
-<body>
-
-  <header class="hero">
-    <div class="logo-wrap">
-      <img src="https://iili.io/f1kshmJ.th.png" alt="Logo Ummu Hamra">
-      <div class="brand">
-        <h1>Resto Ummu Hamra</h1>
-        <p>Masakan Nusantara & Arabian — Premium, Halal, Berkah</p>
-      </div>
-    </div>
-  </header>
-
-  <nav>
-    <a href="#menu">Menu</a>
-    <a href="#contact">Kontak</a>
-    <a href="#location">Lokasi</a>
-  </nav>
-
-  <main class="container">
-
-    <section id="menu" class="fade-in">
-  <div class="section-head" style="justify-content:center"><h2>Daftar Menu</h2></div>
-
-  <div class="menu-poster"><div class="poster-title">🍗 ANEKA AYAM</div><div class="poster-grid">
-    <div class="poster-item"><span>Ayam Goreng Tepung Asam Manis</span><b>45.000</b></div>
-    <div class="poster-item"><span>Ayam Goreng Tepung Saos Padang</span><b>45.000</b></div>
-    <div class="poster-item"><span>Ayam Goreng Tepung Lada Hitam</span><b>45.000</b></div>
-    <div class="poster-item"><span>Ayam Goreng Tepung Rica-rica</span><b>45.000</b></div>
-    <div class="poster-item"><span>Ayam Goreng Tepung Original</span><b>45.000</b></div>
-    <div class="poster-item"><span>Ayam Dua Rasa</span><b>90.000</b></div>
-    <div class="poster-item"><span>Ayam Goreng Ketumbar</span><b>45.000</b></div>
-    <div class="poster-item"><span>Ayam Goreng Bawang</span><b>45.000</b></div>
-    <div class="poster-item"><span>Chicken Wings</span><b>40.000</b></div>
-    <div class="poster-item"><span>Ayam Kung Pao</span><b>50.000</b></div>
-  </div></div>
-
-  <div class="menu-poster"><div class="poster-title">🍚 NASI GORENG</div><div class="poster-grid">
-    <div class="poster-item"><span>Nasi Goreng Ayam</span><b>40.000</b></div>
-    <div class="poster-item"><span>Nasi Goreng Banjar</span><b>40.000</b></div>
-    <div class="poster-item"><span>Nasi Goreng Pete</span><b>40.000</b></div>
-    <div class="poster-item"><span>Nasi Goreng Pete Ikan Asin</span><b>50.000</b></div>
-    <div class="poster-item"><span>Nasi Goreng Kampung</span><b>40.000</b></div>
-    <div class="poster-item"><span>Nasi Goreng Ikan Asin</span><b>40.000</b></div>
-    <div class="poster-item"><span>Nasi Goreng Seafood</span><b>45.000</b></div>
-    <div class="poster-item"><span>Nasi Goreng Buntut</span><b>70.000</b></div>
-    <div class="poster-item"><span>Nasi Goreng Iga Janda</span><b>70.000</b></div>
-    <div class="poster-item"><span>Nasi Goreng Kambing</span><b>70.000</b></div>
-  </div></div>
-
-  <div class="menu-poster"><div class="poster-title">🍜 MIE & BIHUN</div><div class="poster-grid">
-    <div class="poster-item"><span>Mie Goreng Ayam</span><b>45.000</b></div>
-    <div class="poster-item"><span>Mie Goreng Seafood</span><b>50.000</b></div>
-    <div class="poster-item"><span>Mie Kuah Ayam</span><b>45.000</b></div>
-    <div class="poster-item"><span>Mie Kuah Seafood</span><b>50.000</b></div>
-    <div class="poster-item"><span>Bihun Goreng Ayam</span><b>45.000</b></div>
-    <div class="poster-item"><span>Bihun Goreng Seafood</span><b>50.000</b></div>
-    <div class="poster-item"><span>Bihun Goreng Singapore</span><b>45.000</b></div>
-    <div class="poster-item"><span>Kwetiau Goreng Ayam</span><b>50.000</b></div>
-    <div class="poster-item"><span>Kwetiau Goreng Sapi</span><b>60.000</b></div>
-    <div class="poster-item"><span>Kwetiau Goreng Seafood</span><b>55.000</b></div>
-  </div></div>
-
-<div class="menu-poster"><div class="poster-title">🦐 ANEKA SEAFOOD</div><div class="poster-grid">
-    <div class="poster-item"><span>Cumi Goreng Tepung Asam Manis</span><b>50.000</b></div>
-    <div class="poster-item"><span>Cumi Goreng Tepung Saos Padang</span><b>50.000</b></div>
-    <div class="poster-item"><span>Cumi Goreng Tepung Lada Hitam</span><b>50.000</b></div>
-    <div class="poster-item"><span>Cumi Goreng Tepung Rica-rica</span><b>50.000</b></div>
-    <div class="poster-item"><span>Cumi Goreng Tepung Original</span><b>40.000</b></div>
-    <div class="poster-item"><span>Cumi Goreng Tepung Dua Rasa</span><b>100.000</b></div>
-    <div class="poster-item"><span>Udang Goreng Tepung Asam Manis</span><b>50.000</b></div>
-    <div class="poster-item"><span>Udang Goreng Tepung Lada Hitam</span><b>50.000</b></div>
-    <div class="poster-item"><span>Udang Goreng Tepung Saos Padang</span><b>50.000</b></div>
-    <div class="poster-item"><span>Udang Goreng Tepung Rica-rica</span><b>50.000</b></div>
-    <div class="poster-item"><span>Udang Goreng Tepung Original</span><b>40.000</b></div>
-    <div class="poster-item"><span>Udang Goreng Tepung Dua Rasa</span><b>100.000</b></div>
-    <div class="poster-item"><span>Udang Galah Bakar Saus Lada Hitam</span><b>65.000</b></div>
-    <div class="poster-item"><span>Kerang Hijau Asam Manis</span><b>40.000</b></div>
-    <div class="poster-item"><span>Kerang Hijau Lada Hitam</span><b>40.000</b></div>
-    <div class="poster-item"><span>Kerang Hijau Saos Padang</span><b>40.000</b></div>
-    <div class="poster-item"><span>Kerang Hijau Rica-rica</span><b>40.000</b></div>
-    <div class="poster-item"><span>Kerang Dara Asam Manis</span><b>40.000</b></div>
-    <div class="poster-item"><span>Kerang Dara Lada Hitam</span><b>40.000</b></div>
-    <div class="poster-item"><span>Kerang Dara Saos Padang</span><b>40.000</b></div>
-    <div class="poster-item"><span>Kerang Dara Rica-rica</span><b>40.000</b></div>
-  </div>
-</div>
-
-<!-- ANEKA IKAN -->
-<div class="menu-poster">
-  <div class="poster-title">🐟 ANEKA IKAN</div>
-  <div class="poster-grid">
-    <div class="poster-item"><span>Gurami Asam Manis</span><b>100.000</b></div>
-    <div class="poster-item"><span>Gurami Saos Padang</span><b>100.000</b></div>
-    <div class="poster-item"><span>Gurami Lada Hitam</span><b>100.000</b></div>
-    <div class="poster-item"><span>Gurami Rica-rica</span><b>100.000</b></div>
-    <div class="poster-item"><span>Gurami Terbang</span><b>80.000</b></div>
-    <div class="poster-item"><span>Gurami Dua Rasa</span><b>120.000</b></div>
-    <div class="poster-item"><span>Gurami Bakar</span><b>90.000</b></div>
-    <div class="poster-item"><span>Nila Asam Manis</span><b>50.000</b></div>
-    <div class="poster-item"><span>Nila Saos Padang</span><b>50.000</b></div>
-    <div class="poster-item"><span>Nila Lada Hitam</span><b>50.000</b></div>
-    <div class="poster-item"><span>Nila Rica-rica</span><b>50.000</b></div>
-    <div class="poster-item"><span>Nila Bakar</span><b>45.000</b></div>
-    <div class="poster-item"><span>Patin Asam Manis</span><b>35.000</b></div>
-    <div class="poster-item"><span>Patin Saos Padang</span><b>35.000</b></div>
-    <div class="poster-item"><span>Patin Lada Hitam</span><b>35.000</b></div>
-    <div class="poster-item"><span>Patin Rica-rica</span><b>35.000</b></div>
-  </div>
-</div>
-      <!-- ANEKA SAYURAN -->
-<div class="menu-poster">
-  <div class="poster-title">🥬 ANEKA SAYURAN</div>
-  <div class="poster-grid">
-    <div class="poster-item"><span>Cah Kangkung Polos</span><b>30.000</b></div>
-    <div class="poster-item"><span>Cah Kangkung Ayam</span><b>35.000</b></div>
-    <div class="poster-item"><span>Cah Kangkung Balacan</span><b>30.000</n></div>
-    <div class="poster-item"><span>Cah Brokoli Polos</span><b>40.000</b></div>
-    <div class="poster-item"><span>Cah Brokoli Ayam</span><b>45.000</b></div>
-    <div class="poster-item"><span>Cah Brokoli Sapi</span><b>55.000</b></div>
-    <div class="poster-item"><span>Cah Toge Polos</span><b>20.000</b></div>
-    <div class="poster-item"><span>Cah Toge Ikan Asin</span><b>30.000</b></div>
-    <div class="poster-item"><span>Cah Pakcoy Polos</span><b>30.000</b></div>
-    <div class="poster-item"><span>Cah Pakcoy Ayam</span><b>40.000</b></div>
-    <div class="poster-item"><span>Cah Pakcoy Sapi</span><b>45.000</b></div>
-    <div class="poster-item"><span>Pakcoy Saos Tiram</span><b>35.000</b></div>
-    <div class="poster-item"><span>Capcay Polos</span><b>40.000</b></div>
-    <div class="poster-item"><span>Capcay Ayam</span><b>45.000</b></div>
-    <div class="poster-item"><span>Capcay Seafood</span><b>50.000</b></div>
-    <div class="poster-item"><span>Sapo Tahu Ayam</span><b>40.000</b></div>
-    <div class="poster-item"><span>Sapo Tahu Seafood</span><b>55.000</b></div>
-  </div>
-</div>
-
-<!-- MENU PAKET -->
-<div class="menu-poster">
-  <div class="poster-title">🍱 MENU PAKET</div>
-  <div class="poster-grid">
-    <div class="poster-item"><span>Sapi Lada Hitam + Nasi + Es Teh</span><b>70.000</b></div>
-    <div class="poster-item"><span>Buntut Lada Hitam / Saos Padang + Nasi + Es Teh</span><b>70.000</b></div>
-    <div class="poster-item"><span>Iga Lada Hitam / Saos Padang + Nasi + Es Teh</span><b>70.000</b></div>
-    <div class="poster-item"><span>Soup Buntut + Nasi + Es Teh</span><b>70.000</b></div>
-    <div class="poster-item"><span>Soup Iga + Nasi + Es Teh</span><b>70.000</b></div>
-    <div class="poster-item"><span>Ayam Bakar + Nasi + Es Teh</span><b>40.000</b></div>
-    <div class="poster-item"><span>Nasi Putih</span><b>6.000</b></div>
-  </div>
-</div>
-
-<!-- MENU ARABIAN -->
-<div class="menu-poster">
-  <div class="poster-title">🍛 MENU ARABIAN</div>
-  <div class="poster-grid">
-    <div class="poster-item"><span>Nasi Mandi Ayam Bakar</span><b>45.000</n></div>
-    <div class="poster-item"><span>Nasi Mandi Kambing</span><b>70.000</b></div>
-  </div>
-</div>
-
-<!-- MENU PAKET KELUARGA -->
-<div class="menu-poster">
-  <div class="poster-title">👨‍👩‍👧‍👦 MENU PAKET KELUARGA</div>
-  <div class="poster-grid">
-    <div class="poster-item"><span>Ayam Betutu Sambel Embe (4 Nasi + 4 Es Teh)</span><b>145.000</b></div>
-    <div class="poster-item"><span>Whole Fried Chicken (4 Nasi + 4 Es Teh)</span><b>145.000</b></div>
-  </div>
-</div>
-
-<!-- MINUMAN -->
-<div class="menu-poster">
-  <div class="poster-title">🥤 MINUMAN</div>
-  <div class="poster-grid">
-    <div class="poster-item"><span>Es Teh / Teh Hangat</span><b>8.000</b></div>
-    <div class="poster-item"><span>Es Sirup</span><b>8.000</b></div>
-    <div class="poster-item"><span>Es Jeruk</span><b>12.000</b></div>
-    <div class="poster-item"><span>Lemon Tea</span><b>17.000</b></div>
-    <div class="poster-item"><span>Jus Alpukat</span><b>25.000</b></div>
-    <div class="poster-item"><span>Jus Buah Naga</span><b>25.000</b></div>
-    <div class="poster-item"><span>Jus Jeruk</span><b>25.000</b></div>
-    <div class="poster-item"><span>Jus Mangga</span><b>25.000</b></div>
-    <div class="poster-item"><span>Milkshake (All Variant)</span><b>35.000</b></div>
-    <div class="poster-item"><span>Moktail (All Variant)</span><b>30.000</b></div>
-    <div class="poster-item"><span>Milo Mild</span><b>20.000</b></div>
-    <div class="poster-item"><span>Banana Milk</span><b>25.000</b></div>
-    <div class="poster-item"><span>Strawberry Milk Cheese</span><b>35.000</b></div>
-    <div class="poster-item"><span>Kopi Susu / Cappuccino / Brown Sugar</span><b>22.000</b></div>
-    <div class="poster-item"><span>Coffee Float / Mocca Float / Affogato</span><b>35.000</b></div>
-  </div>
-</div>
-
-<!-- SNACK -->
-<div class="menu-poster">
-  <div class="poster-title">🍟 SNACK</div>
-  <div class="poster-grid">
-    <div class="poster-item"><span>Kentang Goreng</span><b>25.000</b></div>
-    <div class="poster-item"><span>Tahu Cabe Garam</span><b>25.000</b></div>
-    <div class="poster-item"><span>Tempe Mendoan</span><b>25.000</b></div>
-    <div class="poster-item"><span>Sambosa</span><b>25.000</b></div>
-    <div class="poster-item"><span>Pastel</span><b>25.000</b></div>
-    <div class="poster-item"><span>Burger</span><b>30.000</b></div>
-    <div class="poster-item"><span>Sosis Barbeque</span><b>25.000</b></div>
-    <div class="poster-item"><span>Mix Platter</span><b>35.000</b></div>
-    <div class="poster-item"><span>Singkong Goreng Crispy</span><b>25.000</b></div>
-    <div class="poster-item"><span>Lumpia Ayam</span><b>25.000</b></div>
-  </div>
-</div>
-
-
-</section>
-
-    <section id="contact" class="fade-in" style="margin-top:30px">
-      <h2 style="font-family:'Playfair Display',serif;color:var(--accent)">Kontak Kami</h2>
-      <p style="margin-top:10px;color:#222">Admin Resto: <a href="https://wa.me/6285750241818" target="_blank">0857-5024-1818</a></p>
-      <p style="color:#222">Admin Bakery & Catering: <a href="https://wa.me/6282149158498" target="_blank">0821-4915-8498</a></p>
-    </section>
-
-    <section id="location" class="fade-in" style="margin-top:26px">
-      <h2 style="font-family:'Playfair Display',serif;color:var(--accent)">Lokasi</h2>
-      <div class="map" style="margin-top:12px;border-radius:12px;overflow:hidden">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.090579904528!2d114.8227635!3d-3.4401923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de6810055a65585:0x847f1573e34f80c1!2sUmmu%20Hamra%20Resto!5e0!3m2!1sid!2sid!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </section>
-
-    <footer>
-      &copy; 2025 Resto Ummu Hamra. All Rights Reserved.
-    </footer>
-
-  </main>
-
-  <a class="whatsapp" href="https://wa.me/6285750241818" target="_blank" aria-label="Chat Admin WhatsApp">Chat Admin</a>
- <script>
-document.querySelectorAll('nav a').forEach(link=>{
-  link.addEventListener('click',e=>{
-    e.preventDefault();
-    document.querySelector(link.getAttribute('href'))
-    .scrollIntoView({behavior:'smooth',block:'start'});
-  });
-});
-
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-    }
-  });
-},{threshold:.12});
-document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
-
-/* Premium parallax background */
-window.addEventListener('scroll',()=>{
-  document.body.style.backgroundPositionY = -(window.scrollY*0.15)+'px';
-});
-
-/* Floating navbar glow */
-const nav=document.querySelector('nav');
-window.addEventListener('scroll',()=>{
-  nav.style.boxShadow=window.scrollY>80
-  ?'0 10px 30px rgba(0,0,0,.45)'
-  :'none';
-});
-</script>
-</body>
-</html>
+  </style>    
+</head>    
+<body>    <header class="hero">    
+    <div class="logo-wrap">    
+      <img src="https://iili.io/f1kshmJ.th.png" alt="Logo Ummu Hamra">    
+      <div class="brand">    
+        <h1>Resto Ummu Hamra</h1>    
+        <p>Masakan Nusantara & Arabian — Premium, Halal, Berkah</p>    
+      </div>    
+    </div>    
+  </header>    <nav>    
+    <a href="#menu">Menu</a>    
+    <a href="#contact">Kontak</a>    
+    <a href="#location">Lokasi</a>    
+  </nav>    <main class="container">  <section id="menu" class="fade-in">    <div class="section-head" style="justify-content:center"><h2>Daftar Menu</h2></div>    <div class="menu-poster"><div class="poster-title">🍗 ANEKA AYAM</div><div class="poster-grid">    
+    <div class="poster-item"><span>Ayam Goreng Tepung Asam Manis</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Ayam Goreng Tepung Saos Padang</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Ayam Goreng Tepung Lada Hitam</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Ayam Goreng Tepung Rica-rica</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Ayam Goreng Tepung Original</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Ayam Dua Rasa</span><b>90.000</b></div>    
+    <div class="poster-item"><span>Ayam Goreng Ketumbar</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Ayam Goreng Bawang</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Chicken Wings</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Ayam Kung Pao</span><b>50.000</b></div>    
+  </div></div>    <div class="menu-poster"><div class="poster-title">🍚 NASI GORENG</div><div class="poster-grid">    
+    <div class="poster-item"><span>Nasi Goreng Ayam</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Nasi Goreng Banjar</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Nasi Goreng Pete</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Nasi Goreng Pete Ikan Asin</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Nasi Goreng Kampung</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Nasi Goreng Ikan Asin</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Nasi Goreng Seafood</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Nasi Goreng Buntut</span><b>70.000</b></div>    
+    <div class="poster-item"><span>Nasi Goreng Iga Janda</span><b>70.000</b></div>    
+    <div class="poster-item"><span>Nasi Goreng Kambing</span><b>70.000</b></div>    
+  </div></div>    <div class="menu-poster"><div class="poster-title">🍜 MIE & BIHUN</div><div class="poster-grid">    
+    <div class="poster-item"><span>Mie Goreng Ayam</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Mie Goreng Seafood</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Mie Kuah Ayam</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Mie Kuah Seafood</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Bihun Goreng Ayam</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Bihun Goreng Seafood</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Bihun Goreng Singapore</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Kwetiau Goreng Ayam</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Kwetiau Goreng Sapi</span><b>60.000</b></div>    
+    <div class="poster-item"><span>Kwetiau Goreng Seafood</span><b>55.000</b></div>    
+  </div></div>  <div class="menu-poster"><div class="poster-title">🦐 ANEKA SEAFOOD</div><div class="poster-grid">    
+    <div class="poster-item"><span>Cumi Goreng Tepung Asam Manis</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Cumi Goreng Tepung Saos Padang</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Cumi Goreng Tepung Lada Hitam</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Cumi Goreng Tepung Rica-rica</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Cumi Goreng Tepung Original</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Cumi Goreng Tepung Dua Rasa</span><b>100.000</b></div>    
+    <div class="poster-item"><span>Udang Goreng Tepung Asam Manis</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Udang Goreng Tepung Lada Hitam</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Udang Goreng Tepung Saos Padang</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Udang Goreng Tepung Rica-rica</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Udang Goreng Tepung Original</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Udang Goreng Tepung Dua Rasa</span><b>100.000</b></div>    
+    <div class="poster-item"><span>Udang Galah Bakar Saus Lada Hitam</span><b>65.000</b></div>    
+    <div class="poster-item"><span>Kerang Hijau Asam Manis</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Kerang Hijau Lada Hitam</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Kerang Hijau Saos Padang</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Kerang Hijau Rica-rica</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Kerang Dara Asam Manis</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Kerang Dara Lada Hitam</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Kerang Dara Saos Padang</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Kerang Dara Rica-rica</span><b>40.000</b></div>    
+  </div>    
+</div>  <!-- ANEKA IKAN -->  <div class="menu-poster">    
+  <div class="poster-title">🐟 ANEKA IKAN</div>    
+  <div class="poster-grid">    
+    <div class="poster-item"><span>Gurami Asam Manis</span><b>100.000</b></div>    
+    <div class="poster-item"><span>Gurami Saos Padang</span><b>100.000</b></div>    
+    <div class="poster-item"><span>Gurami Lada Hitam</span><b>100.000</b></div>    
+    <div class="poster-item"><span>Gurami Rica-rica</span><b>100.000</b></div>    
+    <div class="poster-item"><span>Gurami Terbang</span><b>80.000</b></div>    
+    <div class="poster-item"><span>Gurami Dua Rasa</span><b>120.000</b></div>    
+    <div class="poster-item"><span>Gurami Bakar</span><b>90.000</b></div>    
+    <div class="poster-item"><span>Nila Asam Manis</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Nila Saos Padang</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Nila Lada Hitam</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Nila Rica-rica</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Nila Bakar</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Patin Asam Manis</span><b>35.000</b></div>    
+    <div class="poster-item"><span>Patin Saos Padang</span><b>35.000</b></div>    
+    <div class="poster-item"><span>Patin Lada Hitam</span><b>35.000</b></div>    
+    <div class="poster-item"><span>Patin Rica-rica</span><b>35.000</b></div>    
+  </div>    
+</div>    
+      <!-- ANEKA SAYURAN -->    
+<div class="menu-poster">    
+  <div class="poster-title">🥬 ANEKA SAYURAN</div>    
+  <div class="poster-grid">    
+    <div class="poster-item"><span>Cah Kangkung Polos</span><b>30.000</b></div>    
+    <div class="poster-item"><span>Cah Kangkung Ayam</span><b>35.000</b></div>    
+    <div class="poster-item"><span>Cah Kangkung Balacan</span><b>30.000</n></div>    
+    <div class="poster-item"><span>Cah Brokoli Polos</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Cah Brokoli Ayam</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Cah Brokoli Sapi</span><b>55.000</b></div>    
+    <div class="poster-item"><span>Cah Toge Polos</span><b>20.000</b></div>    
+    <div class="poster-item"><span>Cah Toge Ikan Asin</span><b>30.000</b></div>    
+    <div class="poster-item"><span>Cah Pakcoy Polos</span><b>30.000</b></div>    
+    <div class="poster-item"><span>Cah Pakcoy Ayam</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Cah Pakcoy Sapi</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Pakcoy Saos Tiram</span><b>35.000</b></div>    
+    <div class="poster-item"><span>Capcay Polos</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Capcay Ayam</span><b>45.000</b></div>    
+    <div class="poster-item"><span>Capcay Seafood</span><b>50.000</b></div>    
+    <div class="poster-item"><span>Sapo Tahu Ayam</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Sapo Tahu Seafood</span><b>55.000</b></div>    
+  </div>    
+</div>  <!-- MENU PAKET -->  <div class="menu-poster">    
+  <div class="poster-title">🍱 MENU PAKET</div>    
+  <div class="poster-grid">    
+    <div class="poster-item"><span>Sapi Lada Hitam + Nasi + Es Teh</span><b>70.000</b></div>    
+    <div class="poster-item"><span>Buntut Lada Hitam / Saos Padang + Nasi + Es Teh</span><b>70.000</b></div>    
+    <div class="poster-item"><span>Iga Lada Hitam / Saos Padang + Nasi + Es Teh</span><b>70.000</b></div>    
+    <div class="poster-item"><span>Soup Buntut + Nasi + Es Teh</span><b>70.000</b></div>    
+    <div class="poster-item"><span>Soup Iga + Nasi + Es Teh</span><b>70.000</b></div>    
+    <div class="poster-item"><span>Ayam Bakar + Nasi + Es Teh</span><b>40.000</b></div>    
+    <div class="poster-item"><span>Nasi Putih</span><b>6.000</b></div>    
+  </div>    
+</div>  <!-- MENU ARABIAN -->  <div class="menu-poster">    
+  <div class="poster-title">🍛 MENU ARABIAN</div>    
+  <div class="poster-grid">    
+    <div class="poster-item"><span>Nasi Mandi Ayam Bakar</span><b>45.000</n></div>    
+    <div class="poster-item"><span>Nasi Mandi Kambing</span><b>70.000</b></div>    
+  </div>    
+</div>  <!-- MENU PAKET KELUARGA -->  <div class="menu-poster">    
+  <div class="poster-title">👨‍👩‍👧‍👦 MENU PAKET KELUARGA</div>    
+  <div class="poster-grid">    
+    <div class="poster-item"><span>Ayam Betutu Sambel Embe (4 Nasi + 4 Es Teh)</span><b>145.000</b></div>    
+    <div class="poster-item"><span>Whole Fried Chicken (4 Nasi + 4 Es Teh)</span><b>145.000</b></div>    
+  </div>    
+</div>  <!-- MINUMAN -->  <div class="menu-poster">    
+  <div class="poster-title">🥤 MINUMAN</div>    
+  <div class="poster-grid">    
+    <div class="poster-item"><span>Es Teh / Teh Hangat</span><b>8.000</b></div>    
+    <div class="poster-item"><span>Es Sirup</span><b>8.000</b></div>    
+    <div class="poster-item"><span>Es Jeruk</span><b>12.000</b></div>    
+    <div class="poster-item"><span>Lemon Tea</span><b>17.000</b></div>    
+    <div class="poster-item"><span>Jus Alpukat</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Jus Buah Naga</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Jus Jeruk</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Jus Mangga</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Milkshake (All Variant)</span><b>35.000</b></div>    
+    <div class="poster-item"><span>Moktail (All Variant)</span><b>30.000</b></div>    
+    <div class="poster-item"><span>Milo Mild</span><b>20.000</b></div>    
+    <div class="poster-item"><span>Banana Milk</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Strawberry Milk Cheese</span><b>35.000</b></div>    
+    <div class="poster-item"><span>Kopi Susu / Cappuccino / Brown Sugar</span><b>22.000</b></div>    
+    <div class="poster-item"><span>Coffee Float / Mocca Float / Affogato</span><b>35.000</b></div>    
+  </div>    
+</div>  <!-- SNACK -->  <div class="menu-poster">    
+  <div class="poster-title">🍟 SNACK</div>    
+  <div class="poster-grid">    
+    <div class="poster-item"><span>Kentang Goreng</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Tahu Cabe Garam</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Tempe Mendoan</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Sambosa</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Pastel</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Burger</span><b>30.000</b></div>    
+    <div class="poster-item"><span>Sosis Barbeque</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Mix Platter</span><b>35.000</b></div>    
+    <div class="poster-item"><span>Singkong Goreng Crispy</span><b>25.000</b></div>    
+    <div class="poster-item"><span>Lumpia Ayam</span><b>25.000</b></div>    
+  </div>    
+</div>  </section>  <section id="contact" class="fade-in" style="margin-top:30px">    
+  <h2 style="font-family:'Playfair Display',serif;color:var(--accent)">Kontak Kami</h2>    
+  <p style="margin-top:10px;color:#222">Admin Resto: <a href="https://wa.me/6285750241818" target="_blank">0857-5024-1818</a></p>    
+  <p style="color:#222">Admin Bakery & Catering: <a href="https://wa.me/6282149158498" target="_blank">0821-4915-8498</a></p>    
+</section>    <section id="location" class="fade-in" style="margin-top:26px">    
+  <h2 style="font-family:'Playfair Display',serif;color:var(--accent)">Lokasi</h2>    
+  <div class="map" style="margin-top:12px;border-radius:12px;overflow:hidden">    
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.090579904528!2d114.8227635!3d-3.4401923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de6810055a65585:0x847f1573e34f80c1!2sUmmu%20Hamra%20Resto!5e0!3m2!1sid!2sid!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    
+  </div>    
+</section>    <footer>    
+  &copy; 2025 Resto Ummu Hamra. All Rights Reserved.    
+</footer>    </main>  <a class="whatsapp" href="https://wa.me/6285750241818" target="_blank" aria-label="Chat Admin WhatsApp">Chat Admin</a>    <script>    
+    // Smooth scroll (works for links)    
+    document.querySelectorAll('nav a').forEach(link => {    
+      link.addEventListener('click', e => {    
+        e.preventDefault();    
+        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior:'smooth', block:'start' });    
+      });    
+    });    
+    
+    // Intersection Observer: fade-in for sections    
+    const observer = new IntersectionObserver((entries) => {    
+      entries.forEach(entry => {    
+        if(entry.isIntersecting){    
+          entr
