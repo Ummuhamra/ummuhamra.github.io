@@ -7,128 +7,82 @@
   <!-- Replace or keep Google Fonts as you like -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --accent:#b85c1e; /* coklat-oranye seperti foto */
-      --accent-2:#f2c27b;
-      --paper:#f7e7c6;
-      --paper-2:#edd8ae;
-      --dark:#3b2414;
-      --text:#3b2414;
-      --card-radius:10px;
-      --shadow: 0 10px 28px rgba(0,0,0,0.28);
-      --max-width:980px;
-    }
+   html,body{
+  background-attachment: fixed;
+  scroll-behavior:smooth;
+}
 
-    /* reset */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{
-      /* Background utama ala menu Timur Tengah */
-      background: url('/mnt/data/1000265654.png') no-repeat center top fixed;
-      background-size: cover;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding-bottom:60px;
-    }
+nav{
+  position:sticky;
+  top:12px;
+  z-index:99;
+  backdrop-filter: blur(10px);
+  animation:navFloat 1s ease;
+}
 
-    /* Top bar / hero */
-    .hero{
-      max-width:var(--max-width);margin:0 auto;padding:38px 20px 26px;display:flex;align-items:center;gap:20px;position:relative;
-    }
-    .logo-wrap{display:flex;align-items:center;gap:14px}
-    .logo-wrap img{width:84px;height:84px;object-fit:contain;border-radius:12px;box-shadow:var(--shadow);background:linear-gradient(180deg,var(--cream),#fff)}
-    .brand{
-      color:var(--cream);text-shadow:0 6px 30px rgba(0,0,0,0.5)
-    }
-    .brand h1{font-family:'Playfair Display', serif;font-size:2.2rem;margin-bottom:4px;color:var(--accent-2)}
-    .brand p{font-size:0.95rem;opacity:0.95}
+@keyframes navFloat{
+  from{opacity:0;transform:translateY(-20px)}
+  to{opacity:1;transform:none}
+}
 
-    /* Navigation (glass) */
-    nav{
-      width:100%;display:flex;justify-content:center;gap:18px;padding:10px 16px;border-radius:8px;margin:10px auto 26px;
-      background: linear-gradient(180deg, var(--paper), var(--paper-2));
-      max-width:520px;box-shadow:var(--shadow);text-decoration:none;padding:8px 14px;border-radius:999px;font-weight:600;transition:all .22s}
-    nav a:hover{transform:translateY(-3px);background:var(--glass-2);color:#fff}
+.poster-title{
+  animation: glow 3s infinite alternate;
+}
 
-    /* Main container */
-    .container{max-width:var(--max-width);margin:0 auto;padding:28px 22px;background:linear-gradient(180deg, var(--paper), var(--paper-2));border-radius:16px}
+@keyframes glow{
+  from{box-shadow:0 0 10px rgba(242,194,123,.4)}
+  to{box-shadow:0 0 26px rgba(242,194,123,.9)}
+}
 
-    /* Section headings */
-    .section-head{display:flex;align-items:end;gap:18px;margin:20px 0 12px}
-    .section-head h2{font-family:'Playfair Display',serif;color:var(--accent);font-size:1.45rem;border-bottom:3px solid var(--accent);padding-bottom:6px}
-    .section-lead{color:#fff;opacity:0.9;font-size:0.95rem}
+.menu-poster{
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+}
+.menu-poster:hover{
+  transform:scale(1.02);
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
 
-    /* Grid */
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:14px}
-    .menu-card{
-      background: linear-gradient(180deg, #fff7e6, #f3deb8);
-      border:1px solid #d8b27c;
-      border-radius:var(--card-radius);
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      position:relative;
-      min-height:100px;
-      display:flex;
-      flex-direction:column
-    }
-    .menu-card .thumb{height:110px;object-fit:cover;width:100%;display:block}
-    .menu-card .body{padding:12px 14px 16px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
-    .menu-card h4{font-size:1rem;color:var(--accent);margin-bottom:8px;font-weight:700}
-    .menu-card p{font-size:0.9rem;color:#333;margin-bottom:8px}
+.poster-item{
+  position:relative;
+  overflow:hidden;
+}
+.poster-item::after{
+  content:'';
+  position:absolute;
+  top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
+}
+.poster-item:hover::after{
+  left:140%;
+  transition:all .7s ease;
+}
 
-    /* price badge */
-    .price-badge{position:absolute;right:12px;top:12px;background:var(--accent);color:#fff;padding:8px 10px;border-radius:999px;font-weight:700;box-shadow:0 6px 18px rgba(245,127,23,0.32)}
+.whatsapp{
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
 
-    /* Hover effect */
-    .menu-card:hover{transform:translateY(-8px);transition:transform .25s;box-shadow:0 20px 40px rgba(0,0,0,0.32)}
+.fade-in.show{
+  animation:reveal .9s ease both;
+}
+@keyframes reveal{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:none}
+}
 
-    /* WhatsApp floating */
-    .whatsapp{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;padding:12px 16px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,0.35);display:flex;gap:10px;align-items:center}
-
-    /* Map & footer */
-    .map{margin-top:24px;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.25)}
-    .map iframe{width:100%;height:340px;border:0;display:block}
-    footer{margin-top:26px;text-align:center;padding:12px;color:#fff;opacity:0.95}
-
-    /* Small screens */
-    @media(max-width:768px){
-      .hero{flex-direction:column;align-items:flex-start;padding:22px}
-      .brand h1{font-size:1.6rem}
-      .menu-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
-      .menu-card .thumb{height:96px}
-    }
-    @media(max-width:420px){
-      .menu-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
-      nav{padding:8px;gap:10px}
-    }
-
-    /* fade-in animation for sections */
-    .fade-in{opacity:0;transform:translateY(18px);transition:all .6s cubic-bezier(.2,.9,.2,1)}
-    .fade-in.show{opacity:1;transform:none}
-  
-    /* === POSTER STYLE FINAL === */
-    .menu-poster{margin:34px auto;padding:26px 22px;background:linear-gradient(180deg,#f8e9c8,#eed6a8);border-radius:14px;box-shadow:0 14px 30px rgba(0,0,0,.35)}
-    .poster-title{
-      margin:-46px auto 22px;
-      width:fit-content;
-      padding:10px 34px;
-      background:linear-gradient(180deg,#8b4a1f,#6a3416);
-      color:#f7e2b5;
-      font-family:'Playfair Display',serif;
-      font-size:1.2rem;
-      letter-spacing:.5px;
-      border-radius:999px;
-      box-shadow:0 10px 24px rgba(0,0,0,.45);
-      border:2px solid #f2c27b;
-    }
-    .poster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 22px}
-    .poster-item{display:flex;justify-content:space-between;gap:12px;font-size:.92rem;padding:6px 0;border-bottom:1px dashed rgba(90,50,20,.35)}
-    .poster-item span{flex:1}
-    .poster-item b{white-space:nowrap;color:#7a3e18}
-
-    @media(max-width:900px){.poster-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:560px){.poster-grid{grid-template-columns:1fr}.poster-title{font-size:1.05rem}}
-
-  </style>
+/* Parallax background effect */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.25);
+  z-index:-1;
+} </style>
 </head>
 <body>
 
@@ -357,31 +311,36 @@
   </main>
 
   <a class="whatsapp" href="https://wa.me/6285750241818" target="_blank" aria-label="Chat Admin WhatsApp">Chat Admin</a>
+ <script>
+document.querySelectorAll('nav a').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href'))
+    .scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
 
-  <script>
-    // Smooth scroll (works for links)
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior:'smooth', block:'start' });
-      });
-    });
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 
-    // Intersection Observer: fade-in for sections
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-        }
-      });
-    }, {threshold: 0.12});
+/* Premium parallax background */
+window.addEventListener('scroll',()=>{
+  document.body.style.backgroundPositionY = -(window.scrollY*0.15)+'px';
+});
 
-    document.querySelectorAll('.fade-in').forEach(node => observer.observe(node));
-
-    // Optional: lazy-load images inside .menu-card
-    document.querySelectorAll('.menu-card img').forEach(img=>{
-      if('loading' in HTMLImageElement.prototype) img.setAttribute('loading','lazy');
-    });
-  </script>
+/* Floating navbar glow */
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{
+  nav.style.boxShadow=window.scrollY>80
+  ?'0 10px 30px rgba(0,0,0,.45)'
+  :'none';
+});
+</script>
 </body>
 </html>
