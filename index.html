@@ -336,6 +336,17 @@ function orderMenu(nama,harga){
   const url = `https://wa.me/${no}?text=${encodeURIComponent(text)}`;
   window.open(url,'_blank');
 }
+</script><script>
+const items = document.querySelectorAll('.poster-item');
+const wave = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('show'), i*60);
+    }
+  });
+},{threshold:0.1});
+
+items.forEach(i=>wave.observe(i));
 </script></body>  
 </html>
 
