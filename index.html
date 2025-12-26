@@ -347,7 +347,42 @@ const wave = new IntersectionObserver(entries=>{
 },{threshold:0.1});
 
 items.forEach(i=>wave.observe(i));
-</script> </body>  
+</script> <script>
+// Ambil semua elemen dengan class .fade-in dan .poster-item
+const faders = document.querySelectorAll('.fade-in');
+const posterItems = document.querySelectorAll('.poster-item');
+
+// Fungsi untuk cek elemen apakah terlihat di viewport
+function isInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.bottom >= 0
+  );
+}
+
+// Fungsi untuk menambahkan class show saat elemen terlihat
+function fadeInOnScroll() {
+  faders.forEach(el => {
+    if (isInViewport(el)) el.classList.add('show');
+  });
+  posterItems.forEach(el => {
+    if (isInViewport(el)) el.classList.add('show');
+  });
+}
+
+// Jalankan saat scroll dan saat load
+window.addEventListener('scroll', fadeInOnScroll);
+window.addEventListener('load', fadeInOnScroll);
+
+// Smooth scroll untuk navbar
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script></body>  
 </html>
 
 
