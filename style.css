@@ -124,4 +124,6 @@ nav a:hover{color:#fff;text-shadow:0 0 8px gold}
   color:#3b2414;
 }
 .poster-item:active{transform:scale(.97)}
-@keyframes shine{to{transform:translateX(100%)}}
+@keyframes shine{to{transform:translateX(100%)}}.menu-poster .poster-item:first-child{
+  margin-top:10px;
+}
