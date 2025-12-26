@@ -329,6 +329,13 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.12});
 
 document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script><script>
+function orderMenu(nama,harga){
+  const no = "6285750241818";
+  const text = `Assalamualaikum, saya mau pesan:\n\n🍽️ ${nama}\n💰 Harga: Rp${harga}\n\nMohon diproses. Terima kasih.`;
+  const url = `https://wa.me/${no}?text=${encodeURIComponent(text)}`;
+  window.open(url,'_blank');
+}
 </script></body>  
 </html>
 
