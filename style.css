@@ -87,13 +87,15 @@ nav a:hover{color:#fff;text-shadow:0 0 8px gold}
 .poster-item{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  padding:10px 12px;
+  align-items:flex-start;
+  gap:14px;
+  padding:14px 18px;
   border-bottom:1px dashed rgba(90,50,20,.35);
-  font-size:.95rem;
+  font-size:1rem;
+  line-height:1.6;
   cursor:pointer;
   background:rgba(0,0,0,.55);
-  border-radius:10px;
+  border-radius:14px;
   color:#fff;
   opacity:0;
   transform:translateY(18px);
@@ -101,7 +103,10 @@ nav a:hover{color:#fff;text-shadow:0 0 8px gold}
   position:relative;
   overflow:hidden;
 }
-.poster-item span{max-width:75%}
+.poster-item span{
+  max-width:78%;
+  word-break:break-word;
+}
 .poster-item b{color:#f2c27b;font-weight:700}
 .poster-item.show{opacity:1;transform:none}
 .poster-item::before{
