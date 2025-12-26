@@ -78,4 +78,39 @@ nav a:hover{color:#fff;text-shadow:0 0 8px gold}
   0%{transform:scale(1)}
   50%{transform:scale(1.1)}
   100%{transform:scale(1)}
-    }
+    }/* === PREMIUM MENU ANIMATION === */
+.poster-item{
+  position:relative;
+  overflow:hidden;
+  transition:.35s cubic-bezier(.2,.9,.2,1);
+}
+
+.poster-item::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:translateX(-100%);
+}
+
+.poster-item:hover::before{
+  animation:shine 1.2s;
+}
+.poster-item{
+  opacity:0;
+  transform:translateY(18px);
+}
+
+.poster-item.show{
+  opacity:1;
+  transform:none;
+  }
+
+@keyframes shine{
+  to{transform:translateX(100%)}
+}
+
+.poster-item:hover{
+  transform:translateY(-8px) scale(1.05);
+  box-shadow:0 18px 36px rgba(0,0,0,.4);
+}
