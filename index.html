@@ -220,7 +220,7 @@ footer{margin-top:26px;text-align:center;padding:12px;color:#fff;opacity:0.95}
   <div class="poster-grid">  
     <div class="poster-item"><span>Cah Kangkung Polos</span><b>30.000</b></div>  
     <div class="poster-item"><span>Cah Kangkung Ayam</span><b>35.000</b></div>  
-    <div class="poster-item"><span>Cah Kangkung Balacan</span><b>30.000</n></div>  
+      <div class="poster-item"><span>Cah Kangkung Balacan</span><b>30.000</b></div>
     <div class="poster-item"><span>Cah Brokoli Polos</span><b>40.000</b></div>  
     <div class="poster-item"><span>Cah Brokoli Ayam</span><b>45.000</b></div>  
     <div class="poster-item"><span>Cah Brokoli Sapi</span><b>55.000</b></div>  
@@ -250,7 +250,7 @@ footer{margin-top:26px;text-align:center;padding:12px;color:#fff;opacity:0.95}
 </div>  <!-- MENU ARABIAN -->  <div class="menu-poster">  
   <div class="poster-title">🍛 MENU ARABIAN</div>  
   <div class="poster-grid">  
-    <div class="poster-item"><span>Nasi Mandi Ayam Bakar</span><b>45.000</n></div>  
+      <div class="poster-item"><span>Nasi Mandi Ayam Bakar</span><b>45.000</b></div>
     <div class="poster-item"><span>Nasi Mandi Kambing</span><b>70.000</b></div>  
   </div>  
 </div>  <!-- MENU PAKET KELUARGA -->  <div class="menu-poster">  
@@ -311,32 +311,24 @@ footer{margin-top:26px;text-align:center;padding:12px;color:#fff;opacity:0.95}
 
   </main>  <a class="whatsapp" href="https://wa.me/6285750241818" target="_blank" aria-label="Chat Admin WhatsApp">Chat Admin</a>
 
-  <script>  
-    // Smooth scroll (works for links)  
-    document.querySelectorAll('nav a').forEach(link => {  
-      link.addEventListener('click', e => {  
-        e.preventDefault();  
-        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior:'smooth', block:'start' });  
-      });  
-    });  
-  
-    // Intersection Observer: fade-in for sections  
-    const observer = new IntersectionObserver((entries) => {  
-      entries.forEach(entry => {  
-        if(entry.isIntersecting){  
-          entry.target.classList.add('show');  
-        }  
-      });  
-    }, {threshold: 0.12});  
-  
-    document.querySelectorAll('.fade-in').forEach(node => observer.observe(node));  
-  
-    // Optional: lazy-load imag
-inside .menu-card  
-    document.querySelectorAll('.menu-card img').forEach(img=>{  
-      if('loading' in HTMLImageElement.prototype) img.setAttribute('loading','lazy');  
-    });  
-  </script><script src="./script.js"></script>  </body>  
+  <script>
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+  });
+});
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:0.12});
+
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script></body>  
 </html>
 
 
